@@ -7,10 +7,10 @@ node {
     }
   }
   stage('Test') {
-    echo "2.Test Stage - ${build_tag}"
+    echo "2.Test Stage - SKIP"
   }
   stage('Build') {
-    echo "3.Build Stage"
+    echo "3.Build Stage - ${build_tag}"
   }
   stage('Deploy') {
     echo "4. Deploy Stage"
