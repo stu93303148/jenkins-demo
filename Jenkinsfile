@@ -7,7 +7,7 @@ node {
     }
   }
   stage('Test') {
-    echo "2.Test Stage"
+    echo "2.Test Stage - ${build_tag}"
   }
   stage('Build') {
     echo "3.Build Stage"
