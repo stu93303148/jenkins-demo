@@ -1,7 +1,7 @@
 node {
   stage('Clone') {
     echo "1.Clone Stage"
-    git url: "https://github.com/stu93303148/jenkins-demo.git"
+    git credentialsId: "git_credentials", url: "https://github.com/stu93303148/jenkins-demo.git"
   }
   stage('Test') {
     echo "2.Test Stage"
