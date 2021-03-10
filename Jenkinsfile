@@ -9,7 +9,7 @@ pipeline {
   }
   agent any
   stages {
-    stage('Clone') {
+    stage('Github Clone') {
       steps {
         echo "1.Clone Stage"
         git credentialsId: githubCredential, url: githubURL, branch: githubBranch
@@ -18,22 +18,17 @@ pipeline {
         }
       }
     }
-    stage('Test') {
+    stage('Image Build') {
       steps {
-        echo "2.Test Stage - SKIP"
-      }
-    }
-    stage('Build') {
-      steps {
-        echo "3.Build Stage - ${build_tag}"
+        echo "2.Build Stage - ${build_tag}"
         script {
           dockerImage = docker.build registry + ":$build_tag"
         }
       }
     }
-    stage('Deploy') {
+    stage('Image Deploy DockerHub') {
       steps {
-        echo "4. Deploy Stage"
+        echo "3. Deploy Stage"
       }
     }
   }
