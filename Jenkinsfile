@@ -12,7 +12,7 @@ node {
   stage('Build') {
     echo "3.Build Stage - ${build_tag}"
     script {
-      dockerImage = docker.build stu93303148/jenkins-demo
+      dockerImage = docker.build jenkins-demo
     }
   }
   stage('Deploy') {
