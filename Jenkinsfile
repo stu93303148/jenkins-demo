@@ -1,4 +1,9 @@
 node {
+  environment {
+    registry = "stu93303148/jenkins-demo"
+    registryCredential = 'dockerhub_credentials'
+    dockerImage = ''
+  }
   stage('Clone') {
     echo "1.Clone Stage"
     git credentialsId: "git_credentials", url: "https://github.com/stu93303148/jenkins-demo.git", branch: "main"
@@ -12,7 +17,7 @@ node {
   stage('Build') {
     echo "3.Build Stage - ${build_tag}"
     script {
-      dockerImage = docker.build jenkins-demo
+      dockerImage = docker.build registry + ":$build_tag"
     }
   }
   stage('Deploy') {
