@@ -3,13 +3,16 @@ pipeline {
     registry = "stu93303148/jenkins-demo"
     registryCredential = 'dockerhub_credentials'
     dockerImage = ''
+    githubCredential = 'git_credentials'
+    githubBranch = 'main'
+    githubURL = 'https://github.com/stu93303148/jenkins-demo.git'
   }
   agent any
   stages {
     stage('Clone') {
       steps {
         echo "1.Clone Stage"
-        git credentialsId: "git_credentials", url: "https://github.com/stu93303148/jenkins-demo.git", branch: "main"
+        git credentialsId: githubCredential, url: githubURL, branch: githubBranch
         script {
             build_tag = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
         }
