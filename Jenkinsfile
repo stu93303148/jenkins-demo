@@ -1,4 +1,4 @@
-node {
+pipeline {
   environment {
     registry = "stu93303148/jenkins-demo"
     registryCredential = 'dockerhub_credentials'
@@ -16,9 +16,6 @@ node {
   }
   stage('Build') {
     echo "3.Build Stage - ${build_tag}"
-    script {
-      dockerImage = docker.build registry + ":$build_tag"
-    }
   }
   stage('Deploy') {
     echo "4. Deploy Stage"
