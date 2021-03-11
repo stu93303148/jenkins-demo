@@ -7,5 +7,5 @@ import (
 )
 
 func main() {
-	fmt.Println("Hello, CloudCube! ver.21")
+	fmt.Println("Hello, CloudCube! ver.22")
 }
